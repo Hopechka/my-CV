@@ -245,6 +245,7 @@ body {
   flex: 1;
   background: var(--main-bg-light);
   position: relative;
+  display: flex;
 }
 
 .contacts_tech-skills_container {
@@ -252,6 +253,7 @@ body {
   flex-direction: column;
   background-color: var(--main-bg-dark);
   width: 420px;
+  height: 100%;
 }
 .contacts,
 .tech-skills,
@@ -276,6 +278,7 @@ body {
 .projects_item,
 .languages_item,
 .certificates_item,
+.certificates_item_show,
 .soft-skills_item {
   color: var(--text-light);
   font-size: 18px;
@@ -333,6 +336,7 @@ body {
 
 .education {
   background-color: var(--text-light);
+  flex: 1;
 }
 .education_title,
 .projects_title,
@@ -373,9 +377,13 @@ body {
   border-radius: 5px;
 }
 
+.certificates_item_hidden {
+  display: none;
+}
+
 .experience_languages_container {
-  position: absolute;
-  left: 420px;
+  position: relative;
+  /* left: 420px; */
   top: -80px;
   width: calc(100% - 420px);
 }
@@ -399,6 +407,19 @@ body {
   width: 24px;
   text-align: center;
   vertical-align: middle;
+}
+
+.certificates_btn_wrapper {
+  text-align: center;
+}
+
+.certificates_btn {
+  background: none;
+  cursor: pointer;
+}
+
+.certificates_hide-more {
+  display: none;
 }
 
 .footer_list {
@@ -450,5 +471,12 @@ body {
   .scrollup {
     bottom: 100px;
     right: 400px;
+  }
+}
+
+@media screen and (max-width: 1146px) {
+  .about-me {
+    row-gap: 15px;
+    padding: 50px 27px 0;
   }
 }

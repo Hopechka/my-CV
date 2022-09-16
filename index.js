@@ -25,3 +25,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+const SHOW_MORE_SERTS = document.querySelector('.certificates_btn');
+const certificates = document.querySelectorAll('.certificates_item');
+const showArrow = (event) => {
+  if (event.target !== null) {
+    const { target } = event;
+    if (target.src.indexOf('up') === -1) {
+      target.src = './assets/icons/arrow_up.svg';
+    } else {
+      target.src = './assets/icons/arrow_down.svg';
+    }
+  }
+};
+const showMoreContent = () => {
+  certificates.forEach((item) => {
+    if (item.classList.contains('certificates_item_hidden')) {
+      item.classList.remove('certificates_item_hidden');
+      item.classList.add('certificates_item_show');
+    } else if (item.classList.contains('certificates_item_show')) {
+      item.classList.remove('certificates_item_show');
+      item.classList.add('certificates_item_hidden');
+    }
+  });
+};
+SHOW_MORE_SERTS.addEventListener('click', showArrow);
+SHOW_MORE_SERTS.addEventListener('click', showMoreContent);
