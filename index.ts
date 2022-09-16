@@ -29,7 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const SHOW_MORE_SERTS = document.querySelector('.certificates_btn') as HTMLButtonElement;
+const SHOW_MORE_PROJECTS = document.querySelector('.projects_btn') as HTMLButtonElement;
 const certificates = document.querySelectorAll('.certificates_item');
+const projects = document.querySelectorAll('.projects_item');
 
 const showArrow = (event: Event) => {
   if (event.target !== null) {
@@ -42,7 +44,7 @@ const showArrow = (event: Event) => {
   }
 };
 
-const showMoreContent = () => {
+const showMoreSerts = () => {
   certificates.forEach((item) => {
     if (item.classList.contains('certificates_item_hidden')) {
       item.classList.remove('certificates_item_hidden');
@@ -54,5 +56,20 @@ const showMoreContent = () => {
   });
 };
 
+const showMoreProjects = () => {
+  projects.forEach((item) => {
+    if (item.classList.contains('projects_item_hidden')) {
+      item.classList.remove('projects_item_hidden');
+      item.classList.add('projects_item_show');
+    } else if (item.classList.contains('projects_item_show')) {
+      item.classList.remove('projects_item_show');
+      item.classList.add('projects_item_hidden');
+    }
+  });
+};
+
 SHOW_MORE_SERTS.addEventListener('click', showArrow);
-SHOW_MORE_SERTS.addEventListener('click', showMoreContent);
+SHOW_MORE_SERTS.addEventListener('click', showMoreSerts);
+
+SHOW_MORE_PROJECTS.addEventListener('click', showArrow);
+SHOW_MORE_PROJECTS.addEventListener('click', showMoreProjects);

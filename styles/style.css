@@ -279,6 +279,7 @@ body {
 .languages_item,
 .certificates_item,
 .certificates_item_show,
+.projects_item_show,
 .soft-skills_item {
   color: var(--text-light);
   font-size: 18px;
@@ -377,7 +378,8 @@ body {
   border-radius: 5px;
 }
 
-.certificates_item_hidden {
+.certificates_item_hidden,
+.projects_item_hidden {
   display: none;
 }
 
@@ -409,17 +411,15 @@ body {
   vertical-align: middle;
 }
 
-.certificates_btn_wrapper {
+.certificates_btn_wrapper,
+.projects_btn_wrapper {
   text-align: center;
 }
 
-.certificates_btn {
+.certificates_btn,
+.projects_btn {
   background: none;
   cursor: pointer;
-}
-
-.certificates_hide-more {
-  display: none;
 }
 
 .footer_list {
