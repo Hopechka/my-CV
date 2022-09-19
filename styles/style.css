@@ -278,8 +278,6 @@ body {
 .projects_item,
 .languages_item,
 .certificates_item,
-.certificates_item_show,
-.projects_item_show,
 .soft-skills_item {
   color: var(--text-light);
   font-size: 18px;
@@ -378,8 +376,7 @@ body {
   border-radius: 5px;
 }
 
-.certificates_item_hidden,
-.projects_item_hidden {
+.hidden {
   display: none;
 }
 

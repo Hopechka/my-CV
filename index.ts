@@ -33,7 +33,7 @@ const SHOW_MORE_PROJECTS = document.querySelector('.projects_btn') as HTMLButton
 const certificates = document.querySelectorAll('.certificates_item');
 const projects = document.querySelectorAll('.projects_item');
 
-const showArrow = (event: Event) => {
+const changeArrow = (event: Event) => {
   if (event.target !== null) {
     const target = event.target as HTMLImageElement;
     if (target.src.indexOf('up') === -1) {
@@ -44,32 +44,20 @@ const showArrow = (event: Event) => {
   }
 };
 
-const showMoreSerts = () => {
-  certificates.forEach((item) => {
-    if (item.classList.contains('certificates_item_hidden')) {
-      item.classList.remove('certificates_item_hidden');
-      item.classList.add('certificates_item_show');
-    } else if (item.classList.contains('certificates_item_show')) {
-      item.classList.remove('certificates_item_show');
-      item.classList.add('certificates_item_hidden');
-    }
-  });
+const showMoreContent = (event: Event) => {
+  let arr = certificates;
+  if (event.target !== null) {
+    const target = event.target as HTMLImageElement;
+    const btnClassName = target.closest('button')!.className;
+    arr = (btnClassName.indexOf('certificates') === -1)
+      ? projects
+      : certificates;
+  }
+  arr.forEach((item, index) => { if (index > 2) { item.classList.toggle('hidden'); } });
 };
 
-const showMoreProjects = () => {
-  projects.forEach((item) => {
-    if (item.classList.contains('projects_item_hidden')) {
-      item.classList.remove('projects_item_hidden');
-      item.classList.add('projects_item_show');
-    } else if (item.classList.contains('projects_item_show')) {
-      item.classList.remove('projects_item_show');
-      item.classList.add('projects_item_hidden');
-    }
-  });
-};
+SHOW_MORE_SERTS.addEventListener('click', changeArrow);
+SHOW_MORE_SERTS.addEventListener('click', showMoreContent);
 
-SHOW_MORE_SERTS.addEventListener('click', showArrow);
-SHOW_MORE_SERTS.addEventListener('click', showMoreSerts);
-
-SHOW_MORE_PROJECTS.addEventListener('click', showArrow);
-SHOW_MORE_PROJECTS.addEventListener('click', showMoreProjects);
+SHOW_MORE_PROJECTS.addEventListener('click', changeArrow);
+SHOW_MORE_PROJECTS.addEventListener('click', showMoreContent);

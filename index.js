@@ -1,67 +1,61 @@
+"use strict";
 document.addEventListener('DOMContentLoaded', () => {
-  const scrollTop = document.querySelector('.scrollup');
-  let pageYOffset = 0;
-  let timeout;
-  window.onscroll = () => {
-    if (timeout) {
-      window.clearTimeout(timeout);
-    }
-    if (window.pageYOffset > 580) {
-      scrollTop.style.display = 'block';
-    } else {
-      scrollTop.style.display = 'none';
-    }
-    pageYOffset = window.pageYOffset;
-    timeout = window.setTimeout(() => {
-      if (window.pageYOffset === pageYOffset) {
-        scrollTop.style.display = 'none';
-      }
-    }, 3000);
-  };
-  scrollTop.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
+    const scrollTop = document.querySelector('.scrollup');
+    let pageYOffset = 0;
+    let timeout;
+    window.onscroll = () => {
+        if (timeout) {
+            window.clearTimeout(timeout);
+        }
+        if (window.pageYOffset > 580) {
+            scrollTop.style.display = 'block';
+        }
+        else {
+            scrollTop.style.display = 'none';
+        }
+        pageYOffset = window.pageYOffset;
+        timeout = window.setTimeout(() => {
+            if (window.pageYOffset === pageYOffset) {
+                scrollTop.style.display = 'none';
+            }
+        }, 3000);
+    };
+    scrollTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
     });
-  });
 });
 const SHOW_MORE_SERTS = document.querySelector('.certificates_btn');
 const SHOW_MORE_PROJECTS = document.querySelector('.projects_btn');
 const certificates = document.querySelectorAll('.certificates_item');
 const projects = document.querySelectorAll('.projects_item');
-const showArrow = (event) => {
-  if (event.target !== null) {
-    const { target } = event;
-    if (target.src.indexOf('up') === -1) {
-      target.src = './assets/icons/arrow_up.svg';
-    } else {
-      target.src = './assets/icons/arrow_down.svg';
+const changeArrow = (event) => {
+    if (event.target !== null) {
+        const target = event.target;
+        if (target.src.indexOf('up') === -1) {
+            target.src = './assets/icons/arrow_up.svg';
+        }
+        else {
+            target.src = './assets/icons/arrow_down.svg';
+        }
     }
-  }
 };
-const showMoreSerts = () => {
-  certificates.forEach((item) => {
-    if (item.classList.contains('certificates_item_hidden')) {
-      item.classList.remove('certificates_item_hidden');
-      item.classList.add('certificates_item_show');
-    } else if (item.classList.contains('certificates_item_show')) {
-      item.classList.remove('certificates_item_show');
-      item.classList.add('certificates_item_hidden');
+const showMoreContent = (event) => {
+    let arr = certificates;
+    if (event.target !== null) {
+        const target = event.target;
+        const btnClassName = target.closest('button').className;
+        arr = (btnClassName.indexOf('certificates') === -1)
+            ? projects
+            : certificates;
     }
-  });
+    arr.forEach((item, index) => { if (index > 2) {
+        item.classList.toggle('hidden');
+    } });
 };
-const showMoreProjects = () => {
-  projects.forEach((item) => {
-    if (item.classList.contains('projects_item_hidden')) {
-      item.classList.remove('projects_item_hidden');
-      item.classList.add('projects_item_show');
-    } else if (item.classList.contains('projects_item_show')) {
-      item.classList.remove('projects_item_show');
-      item.classList.add('projects_item_hidden');
-    }
-  });
-};
-SHOW_MORE_SERTS.addEventListener('click', showArrow);
-SHOW_MORE_SERTS.addEventListener('click', showMoreSerts);
-SHOW_MORE_PROJECTS.addEventListener('click', showArrow);
-SHOW_MORE_PROJECTS.addEventListener('click', showMoreProjects);
+SHOW_MORE_SERTS.addEventListener('click', changeArrow);
+SHOW_MORE_SERTS.addEventListener('click', showMoreContent);
+SHOW_MORE_PROJECTS.addEventListener('click', changeArrow);
+SHOW_MORE_PROJECTS.addEventListener('click', showMoreContent);
