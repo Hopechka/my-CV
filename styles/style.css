@@ -529,7 +529,7 @@ body {
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   body {
     padding: 0px;
   }
@@ -565,14 +565,20 @@ body {
   }
 
   .contacts,
-.tech-skills,
-.education,
-.projects,
-.languages,
-.certificates,
-.soft-skills {
-  padding:20px 20px 0px 20px;
-}
+  .tech-skills,
+  .education,
+  .projects,
+  .languages,
+  .certificates,
+  .soft-skills {
+    padding: 20px 20px 0px 20px;
+  }
+  .nav {
+    border-radius: 0px;
+  }
+  .footer {
+    border-radius: 0px;
+  }
 
   body.off {
     overflow: hidden;
@@ -599,16 +605,18 @@ body {
     width: 320px;
     height: 100%;
     background: var(--title-color);
-    padding-top: 60px;
+    padding-top: 70px;
     text-align: center;
     transition: right 0.5s ease;
     overflow: auto;
     display: flex;
     flex-direction: column;
-
   }
   .nav_list.active {
     right: 0;
+  }
+  .nav_link {
+    font-size: 1.2rem;
   }
 
   /* burger-menu */
