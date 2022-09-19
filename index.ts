@@ -1,3 +1,4 @@
+// Scroll-menu
 document.addEventListener('DOMContentLoaded', () => {
   const scrollTop = document.querySelector('.scrollup') as HTMLLinkElement;
   let pageYOffset = 0;
@@ -28,8 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-const SHOW_MORE_SERTS = document.querySelector('.certificates_btn') as HTMLButtonElement;
-const SHOW_MORE_PROJECTS = document.querySelector('.projects_btn') as HTMLButtonElement;
+// Show more arrows
+
+const showMoreCerts = document.querySelector('.certificates_btn') as HTMLButtonElement;
+const showMoreProjects = document.querySelector('.projects_btn') as HTMLButtonElement;
 const certificates = document.querySelectorAll('.certificates_item');
 const projects = document.querySelectorAll('.projects_item');
 
@@ -56,8 +59,29 @@ const showMoreContent = (event: Event) => {
   arr.forEach((item, index) => { if (index > 2) { item.classList.toggle('hidden'); } });
 };
 
-SHOW_MORE_SERTS.addEventListener('click', changeArrow);
-SHOW_MORE_SERTS.addEventListener('click', showMoreContent);
+showMoreCerts.addEventListener('click', changeArrow);
+showMoreCerts.addEventListener('click', showMoreContent);
 
-SHOW_MORE_PROJECTS.addEventListener('click', changeArrow);
-SHOW_MORE_PROJECTS.addEventListener('click', showMoreContent);
+showMoreProjects.addEventListener('click', changeArrow);
+showMoreProjects.addEventListener('click', showMoreContent);
+
+// Burger-menu
+const burgerBtn = document.querySelector('.burger-menu') as HTMLDivElement;
+const nav = document.querySelector('.nav') as HTMLDivElement;
+const navContainer = document.querySelector('.nav_container') as HTMLDivElement;
+const navList = document.querySelector('.nav_list') as HTMLUListElement;
+
+function activateMenu() {
+  burgerBtn.classList.toggle('active');
+  navContainer.classList.toggle('active');
+  nav.classList.toggle('active');
+  navList.classList.toggle('active');
+  document.body.classList.toggle('off');
+}
+
+function closeMenu() {
+  return activateMenu();
+}
+
+burgerBtn.addEventListener('click', activateMenu);
+navContainer.addEventListener('click', closeMenu);
