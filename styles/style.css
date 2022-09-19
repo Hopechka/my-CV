@@ -478,6 +478,10 @@ body {
   transform: scale(1.25);
 }
 
+.scrollup_btn{
+  padding: 3px 10px 0px 0px
+}
+
 @media screen and (min-width: 1920px) {
   .scrollup {
     bottom: 100px;
